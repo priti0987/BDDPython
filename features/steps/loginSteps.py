@@ -14,7 +14,7 @@ def launch(context):
 def openUrl(context):
     context.driver.get("https://opensource-demo.orangehrmlive.com/")
     context.driver.maximize_window()
-    time.sleep(3)
+    time.sleep(2)
     status = context.driver.find_element(By.XPATH,"//div[@class='orangehrm-login-branding']/img").is_displayed()
     assert status is True
 
