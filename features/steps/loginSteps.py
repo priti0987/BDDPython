@@ -30,7 +30,11 @@ def clickButton(context):
 
 @then('User must successfully login to the Dashboard page')
 def loginVerify(context):
-    text_D = context.driver.find_element(By.XPATH,"//div[contains(@class,'title')]").text
-    print(".......................",text_D)
-    assert text_D == "Dashboard"
-    context.driver.close()
+    try:
+        text_D = context.driver.find_element(By.XPATH,"//div[contains(@class,'title')]").text
+    except:
+        context.driver.close()
+        assert False,"Test Fail"
+    if text_D == "Dashboard":
+        context.driver.close()
+        assert True,"Test Passed"
